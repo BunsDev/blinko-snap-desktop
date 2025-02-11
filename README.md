@@ -21,7 +21,7 @@ Blinko Snap is a lightweight desktop application designed for quick note-taking 
 
 ### Download
 
-Download the latest version from the [Releases](https://github.com/blinko-space/blinko-snap/releases) page.
+Download the latest version from the [Releases](https://github.com/DeDevsClub/devspace-snap/releases) page.
 
 ### System Requirements
 
@@ -47,8 +47,8 @@ Download the latest version from the [Releases](https://github.com/blinko-space/
 
 ```bash
 # Clone the repository
-git clone https://github.com/blinko-space/blinko-snap.git
-cd blinko-snap
+git clone https://github.com/DeDevsClub/devspace-snap.git
+cd devspace-snap
 
 # Install dependencies
 pnpm install
@@ -69,9 +69,9 @@ MIT License - see the [LICENSE](LICENSE) file for details
 
 ## 🔗 Links
 
-- [Blinko Main Project](https://github.com/blinko-space/blinko)
+- [Blinko Main Project](https://github.com/DeDevsClub/dev-space)
 - [Documentation](https://blinko.mintlify.app/introduction)
-- [Website](https://blinko-demo.vercel.app/)
+- [Website](https://space.dedevs.club/)
 
 ## 💖 Contributing
 

@@ -10,7 +10,7 @@ import { resolveResource } from '@tauri-apps/api/path';
 import { path as tauriPath } from '@tauri-apps/api'; 
 
 // Unique identifier for the system tray
-const TRAY_ID = 'blinko-snap-tray';
+const TRAY_ID = 'devspace-snap-tray';
 
 // Flag to prevent multiple simultaneous tray setup attempts
 let isSettingUp = false;

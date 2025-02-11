@@ -132,7 +132,7 @@ export const Settings = observer(() => {
               </div>
             </div>
             <div className={SettingBox}>
-              <p className={`${SettingTitle} select-none`}>{t('blinko-endpoint')}</p>
+              <p className={`${SettingTitle} select-none`}>{t('devspace-endpoint')}</p>
               <div className="pointer-events-auto">
                 <Input
                   className="max-w-[300px]"
@@ -146,7 +146,7 @@ export const Settings = observer(() => {
               </div>
             </div>
             <div className={SettingBox}>
-              <p className={`${SettingTitle} select-none`}>{t('blinko-token')}</p>
+              <p className={`${SettingTitle} select-none`}>{t('devspace-token')}</p>
               <div className="pointer-events-auto">
                 <Input
                   className="max-w-[300px]"

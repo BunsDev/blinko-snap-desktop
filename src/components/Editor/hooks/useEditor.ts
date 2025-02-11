@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { eventBus } from '@/lib/event';
-import { EditorStore } from '../editorStore';
+import type { EditorStore } from '../editorStore';
 import { HandleFileType } from '../editorUtils';
-import { OnSendContentType } from '../type';
+import type { OnSendContentType } from '../type';
 import Vditor from 'vditor';
 import { ToolbarPC } from '../EditorToolbar';
 import { RootStore } from '@/store';
@@ -12,27 +12,35 @@ import { Extend } from '../EditorToolbar/extends';
 import { BlinkoStore } from '@/store/blinkoStore';
 import { getEndpointAndToken } from '@/lib/api';
 
-export const useEditorInit = (
-  store: EditorStore,
-  onChange: ((content: string) => void) | undefined,
-  onSend: (args: OnSendContentType) => Promise<any>,
-  mode: 'create' | 'edit',
-  content: string
-) => {
-  const { t } = useTranslation()
-  const blinko = RootStore.Get(BlinkoStore)
-  useEffect(() => {
+interface UseEditorInitProps {
+  store: EditorStore;
+  onChange: ((content: string) => void) | undefined;
+  onSend: (args: OnSendContentType) => Promise<any>;
+  mode: 'create' | 'edit';
+  content: string;
+}
 
+export const useEditorInit = ({ 
+  store,
+  onChange,
+  onSend,
+  mode,
+  content
+}: UseEditorInitProps) => {
+  const { t } = useTranslation();
+  const blinko = RootStore.Get(BlinkoStore);
+  useEffect(() => {
     if (store.vditor) {
-      store.vditor?.destroy();
-      store.vditor = null
+      store.vditor.destroy();
+      store.vditor = null;
     }
+  }, [store.vditor, store]);
     const { endpoint, token } = getEndpointAndToken()
     // const theme = RootStore.Get(UserStore).theme
-    const vditor = new Vditor("vditor" + "-" + mode, {
+    const vditor = new Vditor(`vditor-${mode}`, {
       width: '100%',
       "toolbar": ToolbarPC,
-      mode: store.viewMode == 'wysiwyg' ? 'ir' : store.viewMode,
+      mode: store.viewMode === 'wysiwyg' ? 'ir' : store.viewMode,
       // theme,
       theme: 'classic',
       counter: {
@@ -54,7 +62,7 @@ export const useEditorInit = (
         onChange?.(value)
       },
       upload: {
-        url: endpoint + 'api/file/upload',
+        url: `${endpoint}api/file/upload`,
         success: (editor, res) => {
           console.log(res)
           const { fileName, filePath, type, size } = JSON.parse(res)
@@ -73,7 +81,7 @@ export const useEditorInit = (
         max: 1024 * 1024 * 1000,
         fieldName: 'file',
         multiple: false,
-        linkToImgUrl: endpoint + 'api/file/upload-by-url',
+        linkToImgUrl: `${endpoint}api/file/upload-by-url`,
         linkToImgFormat(res) {
           const data = JSON.parse(res)
           const result = {

@@ -9,7 +9,7 @@ export const Extend: IHintExtend[] = [{
       i.toLowerCase().includes(value.toLowerCase().replace("#", ''))
     ).map(i => {
       return {
-        html: `<span class="blinko-tag-hint">#${i}</span>`,
+        html: `<span class="devspace-tag-hint">#${i}</span>`,
         value:`#${i}&nbsp;`
       }
     }) ?? []
